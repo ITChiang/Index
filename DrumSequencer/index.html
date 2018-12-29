@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drum Sequencer</title>
+    <link rel="stylesheet" href="style/style1.css" />
+  </head>
+
+  <body>
+    <!--Import ajax,howler and audio source-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.0/howler.min.js"></script>
+    <script src="src/uglipop.js"></script>
+    <script src="two.min.js"></script>
+    <!--Import ajax,howler and audio source-->
+
+    <img src="component/icon3.png" class="test1" />
+    <div class="fullb"></div>
+    <img class="loop_pic" id="loopIcon" src="component/gesture_iconiiii.png" />
+    <div class="buttonclass">
+      <button class="button" onclick="helppopout()"></button> DRUM SEQUENCER
+      [v1.0.1 2018]
+    </div>
+    <div id="notes">Turn on your Volume and Press Space to Start</div>
+    <div>
+      <table id="tracker">
+        <tr class="openhat">
+          .
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"><div></div></td>
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="odd" data-instrument="openhat"></td>
+          <td class="odd" data-instrument="openhat"><div></div></td>
+          <td class="odd" data-instrument="openhat"><div></div></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+          <td class="even" data-instrument="openhat"></td>
+        </tr>
+        <tr class="hihat">
+          <td class="odd" data-instrument="hihat"><div></div></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"><div></div></td>
+          <td class="even" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"></td>
+          <td class="odd" data-instrument="hihat"><div></div></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="odd" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"><div></div></td>
+          <td class="even" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"></td>
+          <td class="even" data-instrument="hihat"></td>
+        </tr>
+        <tr class="kick">
+          <td class="odd" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"><div></div></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"><div></div></td>
+          <td class="even" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="odd" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"></td>
+          <td class="even" data-instrument="kick"><div></div></td>
+          <td class="even" data-instrument="kick"></td>
+        </tr>
+        <tr class="snare">
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="odd" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+          <td class="even" data-instrument="snare"></td>
+        </tr>
+        <tr class="cowbell">
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="odd" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+          <td class="even" data-instrument="cowbell"></td>
+        </tr>
+        <tr class="crash">
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="odd" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+          <td class="even" data-instrument="crash"></td>
+        </tr>
+        <tr class="hitom">
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="odd" data-instrument="hitom"><div></div></td>
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="even" data-instrument="hitom"></td>
+          <td class="even" data-instrument="hitom"></td>
+          <td class="even" data-instrument="hitom"><div></div></td>
+          <td class="even" data-instrument="hitom"></td>
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="odd" data-instrument="hitom"><div></div></td>
+          <td class="odd" data-instrument="hitom"></td>
+          <td class="even" data-instrument="hitom"></td>
+          <td class="even" data-instrument="hitom"><div></div></td>
+          <td class="even" data-instrument="hitom"><div></div></td>
+          <td class="even" data-instrument="hitom"></td>
+        </tr>
+        <tr class="lowtom">
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"><div></div></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"><div></div></td>
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"></td>
+          <td class="odd" data-instrument="lowtom"><div></div></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"></td>
+          <td class="even" data-instrument="lowtom"></td>
+        </tr>
+      </table>
+    </div>
+    <img class="bpc_pic" id="bpmIcon" src="component/gun_icon3.png" />
+    <img class="play_pic" id="playIcon" src="component/play_icon.png" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.4.9/css-doodle.min.js"></script>
+    <script src="src/index.js"></script>
+    <script src="src/tap.js"></script>
+  </body>
+</html>

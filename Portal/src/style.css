@@ -1,0 +1,43 @@
+body {
+  background: black;
+}
+.inputText {
+  font-family: "Quicksand", monospace, sans-serif;
+  font-size: 3vw;
+  position: fixed;
+  top: 40vh;
+  left: 35vw;
+  color: white;
+  animation: fadein 3s;
+  animation-fill-mode: forwards;
+}
+#text1 {
+  left: 43vw;
+}
+#text2 {
+  opacity: 0;
+  animation-delay: 3s;
+}
+#text2-1 {
+  left: 32vw;
+  opacity: 0;
+  animation-delay: 6s;
+}
+
+#text3 {
+  left: 34vw;
+  opacity: 0;
+  animation-delay: 9s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
