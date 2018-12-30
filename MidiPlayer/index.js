@@ -55,7 +55,6 @@ function drawingLines() {
   );
   finishLineArray.push(finishLine);
   finishLine.fill = "#d0c9d0";
-  finishLine.noStroke();
 
   for (i = 0; i < 6; i += 2) {
     // Gray parts
@@ -92,6 +91,7 @@ function drawingLines() {
   lineV.noStroke();
   uiLineArray.push(lineV);
 }
+
 drawingLines();
 // --------------Parsering MIDI--------------------
 function readMidiFile(e) {
@@ -111,8 +111,14 @@ function readMidiFile(e) {
 }
 // --------------Animation Parts--------------------
 two.bind("update", function(frameCount) {
+  if (colorStyle == 1) {
+    // for script 3 dual of fate
+    finishLineArray[0].noStroke();
+  } else {
+    finishLineArray[0].stroke = "black";
+    finishLineArray[0].linewidth = 3;
+  }
   var second = frameCount / 45; // the controller of playing rate
-
   for (j = 0; j < midiSaver[0].tracks.length; j++) {
     if (
       midiEachPos[j] != -1 &&

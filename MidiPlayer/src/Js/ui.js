@@ -46,6 +46,9 @@ $(document).ready(function() {
     document.head.append(linkElement);
     colorStyle = 2;
     document.getElementById("title").innerHTML = "Star Wars - Duel of Fates";
+    var obj = document.createElement("audio");
+    obj.src = "src/component/Lightsaber Sound Effect HQ - HD.mp3";
+    obj.play();
   });
   $("#pickScript4").mousedown(function() {
     readMidiFile("download3.mid");
