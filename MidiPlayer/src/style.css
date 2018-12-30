@@ -12,6 +12,9 @@ body {
   font-family: "DatalegreyaDot";
   font-size: 1.5vw;
 }
+#lightsaber {
+  opacity: 0;
+}
 #bottomHint {
   position: absolute;
   z-index: -2;
@@ -165,6 +168,7 @@ input[type="file"] {
 
 .link_three {
   background-color: #c9c9c9;
+  color: yellow;
 }
 
 .link_four {

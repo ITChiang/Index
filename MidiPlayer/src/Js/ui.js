@@ -45,7 +45,7 @@ $(document).ready(function() {
     linkElement.href = "src/styleS.css";
     document.head.append(linkElement);
     colorStyle = 2;
-    document.getElementById("title").innerHTML = "Duel of Fates";
+    document.getElementById("title").innerHTML = "Star Wars - Duel of Fates";
   });
   $("#pickScript4").mousedown(function() {
     readMidiFile("download3.mid");
