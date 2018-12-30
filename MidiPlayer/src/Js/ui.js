@@ -40,6 +40,12 @@ $(document).ready(function() {
     $(".menu_opener_label ").css("opacity", "0");
     $("#arrowIcon ").css("opacity", "0");
     $("#intro ").css("opacity", "0");
+    var linkElement = document.createElement("link");
+    linkElement.rel = "stylesheet";
+    linkElement.href = "src/styleS.css";
+    document.head.append(linkElement);
+    colorStyle = 2;
+    document.getElementById("title").innerHTML = "Duel of Fates";
   });
   $("#pickScript4").mousedown(function() {
     readMidiFile("download3.mid");

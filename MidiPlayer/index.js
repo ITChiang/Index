@@ -24,6 +24,8 @@ var cololist = [
   "#751aff",
   "#fcc000"
 ]; // color list for each instrument
+var colorlistS = [];
+var colorStyle = 1;
 var playBool = true;
 //-----------------Initial Sound----------------------
 var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
@@ -130,9 +132,23 @@ two.bind("update", function(frameCount) {
           two.height / 60
         );
         midiEachPos[j] += 1;
-        Rect.fill = cololist[j - 2]; // NEED TO MODIFY THE COLOR
+        if (colorStyle == 1) {
+          Rect.fill = cololist[j - 2];
+
+          Rect.noStroke();
+        } else {
+          Rect.opacity = 1;
+          if (j % 2 == 0) {
+            Rect.fill = "#F9051D";
+            Rect.stroke = "#D90116";
+            Rect.linewidth = 2;
+          } else {
+            Rect.fill = "#33FE01";
+            Rect.stroke = "#3AE60F";
+            Rect.linewidth = 2;
+          }
+        } // NEED TO MODIFY THE COLOR
         Rect.opacity = 0.75;
-        Rect.noStroke();
         recrA.push(Rect);
         midiArray.push(midiSaver[0].tracks[j].notes[midiEachPos[j]]); // recording the arrary for later using
         midiInstrument.push(midiSaver[0].tracks[j].instrumentNumber);
@@ -154,6 +170,7 @@ two.bind("update", function(frameCount) {
       rectToHead.toFixed(0) < 0.605 * two.width
     ) {
       recrA[i].height = two.height / 45;
+      recrA[i].linewidth = 5;
       finishLineArray[0].fill = recrA[i].fill;
 
       player.queueWaveTable(
@@ -169,6 +186,7 @@ two.bind("update", function(frameCount) {
       rectToTail.toFixed(0) > 0.62 * two.width &&
       rectToTail.toFixed(0) < 0.625 * two.width
     ) {
+      recrA[i].noStroke();
       recrA[i].fill = "#b2cace";
       recrA[i].height = two.height / 60;
       finishLineArray[0].fill = "#d0c9d0";
