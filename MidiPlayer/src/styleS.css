@@ -1,25 +1,16 @@
 body {
-  background: rgba(0, 0, 0, 0.863);
+  background: #0f0f0f;
 }
 
 #title {
   position: absolute;
   z-index: 1;
-  left: 39%;
-  top: 1%;
-  color: rgba(255, 255, 255, 0.788);
+  left: 45.2%;
+  top: 0.9%;
+  color: white;
   letter-spacing: 2px;
   font-family: "DatalegreyaDot";
-  font-size: 2vw;
-}
-#lightsaber {
-  opacity: 1;
-  position: absolute;
-  z-index: 7;
-  right: 31.5%;
-  top: 46%;
-  width: 16%;
-  height: 34%;
+  font-size: 1.7vw;
 }
 #bottomHint {
   position: absolute;
@@ -36,17 +27,48 @@ body {
   line-height: 1.3;
   font-size: 1.7vw;
 }
-
-#pinkTriangle {
+/*----------------*/
+.instrument_pic {
   position: absolute;
   z-index: 1;
-  opacity: 0.7;
-  bottom: 0%;
-  left: 45%;
-  border-left: 5vw solid transparent;
-  border-right: 5vw solid transparent;
-  border-bottom: 7vh solid rgba(255, 255, 255, 0.788);
+  margin: auto;
+  display: block;
+  bottom: 30%;
+  width: 4vw;
+  height: 4vw;
+  opacity: 1;
 }
+
+#pianoIcon {
+  left: 29%;
+}
+#fluteIcon {
+  left: 33.5%;
+}
+#a-guitarIcon {
+  left: 38%;
+}
+#e-guitarIcon {
+  left: 42.5%;
+}
+#saxphoneIcon {
+  left: 47%;
+}
+#trumpetIcon {
+  left: 51.5%;
+}
+#violinIcon {
+  left: 56%;
+}
+#celloIcon {
+  left: 60.5%;
+}
+#bassIcon {
+  left: 65%;
+}
+
+/*----------------*/
+
 .file {
   position: fixed;
   z-index: 2;
@@ -74,6 +96,7 @@ input[type="file"] {
   cursor: pointer;
 }
 .play_pic {
+  cursor: pointer;
   position: fixed;
   z-index: 1;
   bottom: 2%;
@@ -82,6 +105,17 @@ input[type="file"] {
   display: block;
   width: 5vh;
   height: 5vh;
+  opacity: 0;
+}
+.question_pic {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 1.3%;
+  margin: auto;
+  display: block;
+  width: 2.5vh;
+  height: 2.5vh;
 }
 /*-----選單用-------*/
 
@@ -89,16 +123,88 @@ input[type="file"] {
   display: none;
 }
 .menu_opener:checked ~ .link_one {
-  bottom: 16vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 15vh;
 }
 .menu_opener:checked ~ .link_two {
-  bottom: 24vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 22vh;
 }
 .menu_opener:checked ~ .link_three {
-  bottom: 32vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 29vh;
 }
 .menu_opener:checked ~ .link_four {
-  bottom: 40vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 36vh;
+}
+.menu_opener:checked ~ .link_five {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 43vh;
+}
+.menu_opener:checked ~ .link_six {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 50vh;
+}
+.menu_opener:checked ~ .link_seven {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 57vh;
+}
+.menu_opener:checked ~ .link_eight {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 64vh;
+}
+.menu_opener:checked ~ .link_nine {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 71vh;
+}
+.menu_opener:checked ~ .link_ten {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 78vh;
+}
+.menu_opener:checked ~ .link_elevent {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 85vh;
+}
+.menu_opener:checked ~ .link_twelve {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 92vh;
 }
 
 .menu_opener:checked ~ .menu_opener_label:after {
@@ -111,6 +217,7 @@ input[type="file"] {
 }
 
 .menu_opener_label {
+  cursor: pointer;
   background: #c9c9c9;
   width: 3vw;
   height: 3vw;
@@ -120,7 +227,7 @@ input[type="file"] {
   position: fixed;
   right: 1.2vw;
   bottom: 8vh;
-  z-index: 3;
+  z-index: 2;
 }
 .menu_opener_label:after {
   position: fixed;
@@ -132,7 +239,7 @@ input[type="file"] {
   height: 1vh;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  z-index: 2;
+  z-index: 4;
 }
 .menu_opener_label:before {
   position: fixed;
@@ -144,57 +251,214 @@ input[type="file"] {
   height: 1vh;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  z-index: 2;
+  z-index: 4;
 }
 
 .link_general {
+  right: 1.7vw;
+  bottom: 8.6vh;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5e5d5d;
+  background-color: #c9c9c9;
+  padding: 4px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.7s ease;
+  font-family: "DatalegreyaDot";
+  font-size: 0vh;
+}
+.link_general:hover {
+  background-color: #ececec;
+}
+/*-----選單2用-------*/
+
+#menu_opener_id_2 {
+  display: none;
+}
+.menu_opener_2:checked ~ .link_one_2 {
+  bottom: 15vh;
+}
+.menu_opener_2:checked ~ .link_two_2 {
+  left: calc(6vh + 1.2vw);
+  bottom: 13.32vh;
+}
+.menu_opener_2:checked ~ .link_three_2 {
+  left: calc(10.32vh + 1.2vw);
+  bottom: 9vh;
+}
+.menu_opener_2:checked ~ .link_four_2 {
+  left: calc(12vh + 1.2vw);
+}
+
+.menu_opener_2:checked ~ .menu_opener_label_2:after {
+  transform: rotate(45deg);
+  bottom: 5.5vh;
+}
+.menu_opener_2:checked ~ .menu_opener_label_2:before {
+  transform: rotate(-45deg);
+  bottom: 5.5vh;
+}
+
+.menu_opener_label_2 {
+  cursor: pointer;
+  background: #f3c15ee7;
+  width: 3vw;
+  height: 3vw;
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  position: fixed;
+  left: 1.2vw;
+  bottom: 3vh;
+  z-index: 3;
+  opacity: 0;
+}
+.menu_opener_label_2:after {
+  position: fixed;
+  left: 2.2vw;
+  bottom: 5.5vh;
+  background: #000;
+  content: "";
+  width: 1vw;
+  height: 1vh;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+.menu_opener_label_2:before {
+  position: fixed;
+  left: 2.2vw;
+  bottom: 5.5vh;
+  background: #000;
+  content: "";
+  width: 1vw;
+  height: 1vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.link_general_2 {
   width: 3vw;
   height: 3vw;
   display: block;
   border-radius: 50%;
   position: absolute;
   text-align: center;
-  right: 1.2vw;
-  bottom: 8vh;
+  left: 1.2vw;
+  bottom: 3vh;
   z-index: 2;
-
+  opacity: 0;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   font-family: "DatalegreyaDot";
   font-size: 5vh;
 }
 
-.link_one {
-  background-color: #c9c9c9;
+.link_one_2 {
+  background-color: #ebba5a;
 }
 
-.link_two {
-  background-color: #c9c9c9;
+.link_two_2 {
+  background-color: #ebba5a;
 }
 
-.link_three {
-  background-color: #c9c9c9;
+.link_three_2 {
+  background-color: #ebba5a;
 }
 
-.link_four {
-  background-color: #c9c9c9;
+.link_four_2 {
+  background-color: #ebba5a;
 }
 
-#arrowIcon {
+.frontPage {
+  position: fixed;
+  background: #e0d9db;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.index {
+  position: fixed;
+  font-family: "DatalegreyaDot";
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+}
+#playButton {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vh;
+  font-family: "DatalegreyaDot";
+  font-size: 4.5vh;
+  display: block;
+  border: 0;
+  border: 1px solid #777777;
+  color: #777777;
+  text-align: center;
+  width: 15vw;
+  height: 10vh;
+}
+#playButton:hover {
+  background-color: #808080;
+  color: white;
+}
+h1 {
+  display: block;
+  font-size: 6vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vh;
+}
+p {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vh;
+  padding: 1vh;
+  font-size: 2.5vh;
+}
+a {
+  font-size: 2vh;
+}
+.btnText {
+  margin-left: 3vw;
+  margin-right: auto;
+  text-align: left;
+}
+.btn {
+  background: #c9c9c9;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  position: fixed;
+  z-index: inherit;
+  font-family: monospace;
+  text-align: center;
+  font-size: 5vh;
+  font-weight: bolder;
+}
+#btn2 {
+  background: #ebba5a;
+}
+
+#lightsaber {
+  opacity: 1;
   position: absolute;
-  width: 10vw;
-  bottom: 6.5vh;
-  right: 8vw;
-  transform: rotateY(180deg);
-}
-#intro {
-  position: absolute;
-  color: black;
-  letter-spacing: 2px;
-  font-family: "DatalegreyaDot", Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif;
-  font-size: 3.5vh;
-  bottom: 24vh;
-  right: 7vw;
-  font-weight: 700;
+  z-index: 7;
+  left: 12.5%;
+  top: 40%;
+  width: 16%;
+  height: 25%;
 }

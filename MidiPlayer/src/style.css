@@ -1,19 +1,16 @@
 body {
-  background: #e3dddf;
+  background: #e4dddf;
 }
 
 #title {
   position: absolute;
-  z-index: 1;
-  left: 45.5%;
-  top: 1%;
-  color: rgba(36, 31, 31, 0.788);
+  z-index: 4;
+  left: 46.5%;
+  top: 0.9%;
+  color: rgba(24, 21, 21, 0.788);
   letter-spacing: 2px;
   font-family: "DatalegreyaDot";
-  font-size: 1.5vw;
-}
-#lightsaber {
-  opacity: 0;
+  font-size: 1.7vw;
 }
 #bottomHint {
   position: absolute;
@@ -30,7 +27,66 @@ body {
   line-height: 1.3;
   font-size: 1.7vw;
 }
+/*----------------*/
+.instrument_pic {
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  display: block;
+  bottom: 30%;
+  width: 4vw;
+  height: 4vw;
+  animation-name: breathe;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-play-state: initial;
+  opacity: 1;
+}
+@keyframes breathe {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes breatheStop {
+  0% {
+    opacity: 1;
+  }
+}
+#pianoIcon {
+  left: 29%;
+}
+#fluteIcon {
+  left: 33.5%;
+}
+#a-guitarIcon {
+  left: 38%;
+}
+#e-guitarIcon {
+  left: 42.5%;
+}
+#saxphoneIcon {
+  left: 47%;
+}
+#trumpetIcon {
+  left: 51.5%;
+}
+#violinIcon {
+  left: 56%;
+}
+#celloIcon {
+  left: 60.5%;
+}
+#bassIcon {
+  left: 65%;
+}
 
+/*----------------*/
 #pinkTriangle {
   position: absolute;
   z-index: 1;
@@ -76,6 +132,17 @@ input[type="file"] {
   display: block;
   width: 5vh;
   height: 5vh;
+  opacity: 0;
+}
+.question_pic {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 1.3%;
+  margin: auto;
+  display: block;
+  width: 2.5vh;
+  height: 2.5vh;
 }
 /*-----選單用-------*/
 
@@ -83,25 +150,109 @@ input[type="file"] {
   display: none;
 }
 .menu_opener:checked ~ .link_one {
-  bottom: 16vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 66vh;
+  right: 35vw;
 }
 .menu_opener:checked ~ .link_two {
-  bottom: 24vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 57vh;
+  right: 30vw;
 }
 .menu_opener:checked ~ .link_three {
-  bottom: 32vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 48vh;
+  right: 25vw;
 }
 .menu_opener:checked ~ .link_four {
-  bottom: 40vh;
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 39vh;
+  right: 30vw;
+}
+.menu_opener:checked ~ .link_five {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 30vh;
+  right: 35vw;
+}
+.menu_opener:checked ~ .link_six {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 21vh;
+  right: 45vw;
+}
+.menu_opener:checked ~ .link_seven {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 30vh;
+  right: 55vw;
+}
+.menu_opener:checked ~ .link_eight {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 39vh;
+  right: 60vw;
+}
+.menu_opener:checked ~ .link_nine {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 48vh;
+  right: 65vw;
+}
+.menu_opener:checked ~ .link_ten {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 57vh;
+  right: 60vw;
+}
+.menu_opener:checked ~ .link_elevent {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 66vh;
+  right: 55vw;
+}
+.menu_opener:checked ~ .link_twelve {
+  font-size: 3.5vh;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  bottom: 73.5vh;
+  right: 45vw;
 }
 
 .menu_opener:checked ~ .menu_opener_label:after {
   transform: rotate(45deg);
-  bottom: 10.5vh;
+  bottom: 50vh;
 }
 .menu_opener:checked ~ .menu_opener_label:before {
   transform: rotate(-45deg);
-  bottom: 10.5vh;
+  bottom: 50vh;
 }
 
 .menu_opener_label {
@@ -112,14 +263,102 @@ input[type="file"] {
   cursor: pointer;
   border-radius: 50%;
   position: fixed;
-  right: 1.2vw;
-  bottom: 8vh;
-  z-index: 3;
+  right: 49vw;
+  bottom: 47.5vh;
+  z-index: 4;
 }
 .menu_opener_label:after {
   position: fixed;
-  right: 2.2vw;
-  bottom: 10.5vh;
+  right: 50vw;
+  bottom: 50vh;
+  background: #000;
+  content: "";
+  width: 1vw;
+  height: 1vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  z-index: 4;
+}
+.menu_opener_label:before {
+  position: fixed;
+  right: 50vw;
+  bottom: 50vh;
+  background: #000;
+  content: "";
+  width: 1vw;
+  height: 1vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  z-index: 4;
+}
+
+.link_general {
+  right: 50vw;
+  bottom: 50vh;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  text-align: center;
+  z-index: 3;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #5e5d5d;
+  background-color: #c9c9c9;
+  padding: 6px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.3s ease;
+  font-family: "DatalegreyaDot";
+  font-size: 0vh;
+}
+.link_general:hover {
+  background-color: #ececec;
+}
+/*-----選單2用-------*/
+
+#menu_opener_id_2 {
+  display: none;
+}
+.menu_opener_2:checked ~ .link_one_2 {
+  bottom: 15vh;
+}
+.menu_opener_2:checked ~ .link_two_2 {
+  left: calc(6vh + 1.2vw);
+  bottom: 13.32vh;
+}
+.menu_opener_2:checked ~ .link_three_2 {
+  left: calc(10.32vh + 1.2vw);
+  bottom: 9vh;
+}
+.menu_opener_2:checked ~ .link_four_2 {
+  left: calc(12vh + 1.2vw);
+}
+
+.menu_opener_2:checked ~ .menu_opener_label_2:after {
+  transform: rotate(45deg);
+  bottom: 5.5vh;
+}
+.menu_opener_2:checked ~ .menu_opener_label_2:before {
+  transform: rotate(-45deg);
+  bottom: 5.5vh;
+}
+
+.menu_opener_label_2 {
+  background: #f3c15ee7;
+  width: 3vw;
+  height: 3vw;
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  position: fixed;
+  left: 1.2vw;
+  bottom: 3vh;
+  z-index: 3;
+  opacity: 0;
+}
+.menu_opener_label_2:after {
+  position: fixed;
+  left: 2.2vw;
+  bottom: 5.5vh;
   background: #000;
   content: "";
   width: 1vw;
@@ -128,10 +367,10 @@ input[type="file"] {
   transition: all 0.4s ease;
   z-index: 2;
 }
-.menu_opener_label:before {
+.menu_opener_label_2:before {
   position: fixed;
-  right: 2.2vw;
-  bottom: 10.5vh;
+  left: 2.2vw;
+  bottom: 5.5vh;
   background: #000;
   content: "";
   width: 1vw;
@@ -141,55 +380,43 @@ input[type="file"] {
   z-index: 2;
 }
 
-.link_general {
+.link_general_2 {
   width: 3vw;
   height: 3vw;
   display: block;
   border-radius: 50%;
   position: absolute;
   text-align: center;
-  right: 1.2vw;
-  bottom: 8vh;
+  left: 1.2vw;
+  bottom: 3vh;
   z-index: 2;
-
+  opacity: 0;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   font-family: "DatalegreyaDot";
   font-size: 5vh;
 }
 
-.link_one {
-  background-color: #c9c9c9;
+.link_one_2 {
+  background-color: #ebba5a;
 }
 
-.link_two {
-  background-color: #c9c9c9;
+.link_two_2 {
+  background-color: #ebba5a;
 }
 
-.link_three {
-  background-color: #c9c9c9;
-  color: yellow;
+.link_three_2 {
+  background-color: #ebba5a;
 }
 
-.link_four {
-  background-color: #c9c9c9;
+.link_four_2 {
+  background-color: #ebba5a;
 }
 
-#arrowIcon {
+#frontPage {
   position: absolute;
-  width: 10vw;
-  bottom: 6.5vh;
-  right: 8vw;
-  transform: rotateY(180deg);
-}
-#intro {
-  position: absolute;
-  color: black;
-  letter-spacing: 2px;
-  font-family: "DatalegreyaDot", Impact, Haettenschweiler, "Arial Narrow Bold",
-    sans-serif;
-  font-size: 3.5vh;
-  bottom: 24vh;
-  right: 7vw;
-  font-weight: 700;
+  background: #e4dddf;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
 }

@@ -2,17 +2,16 @@
 var two = new Two({
   fullscreen: true,
   autostart: true
-}).appendTo(document.body); // initialize two.js
-two.pause();
+}).appendTo(document.body);
+two.pause(); // pause the animation (update function)
 //-----------------------------------------------------
-var midifile = [];
 var recrA = []; // For drawing Rectangle
 var finishLineArray = []; //For drawing the finish line
-var uiLineArray = [];
 var midiArray = [];
-var midiInstrument = []; // array for recording type of intsrument
-var midiSaver = [];
-var midiEachPos = [];
+var uiLineArray = []; // For re-drawing the UI, resize
+var midiInstrument = []; // Array for recording type of the instrument
+var midiContainer = [];
+var midiEachPos = []; // Record the progress rate of each track
 var cololist = [
   "#d43f53",
   "#00cc44",
@@ -24,45 +23,30 @@ var cololist = [
   "#751aff",
   "#fcc000"
 ]; // color list for each instrument
-var colorlistS = [];
+var playBool = true; // animation playing or not
+var frame = 0;
+var sampleName = "";
+var audioPlayBool = false;
 var colorStyle = 1;
-var playBool = true;
-//-----------------Initial Sound----------------------
-var AudioContextFunc = window.AudioContext || window.webkitAudioContext;
-var audioContext = new AudioContextFunc();
-var player = new WebAudioFontPlayer();
-player.loader.decodeAfterLoading(audioContext, "_tone_0560_Aspirin_sf2_file"); //trumpet  (audioContext,fileName)
-player.loader.decodeAfterLoading(audioContext, "_tone_0270_Aspirin_sf2_file"); //E-guitar
-player.loader.decodeAfterLoading(
-  audioContext,
-  "_tone_0250_GeneralUserGS_sf2_file"
-); //A-guitar
-player.loader.decodeAfterLoading(audioContext, "_tone_0640_SBLive_sf2"); //saxphone
-player.loader.decodeAfterLoading(audioContext, "_tone_0000_Chaos_sf2_file"); //piano
-player.loader.decodeAfterLoading(audioContext, "_tone_0330_Aspirin_sf2_file"); //bass
-player.loader.decodeAfterLoading(audioContext, "_tone_0400_Aspirin_sf2_file"); //violin
-player.loader.decodeAfterLoading(audioContext, "_tone_0730_Aspirin_sf2_file"); //flute
-player.loader.decodeAfterLoading(audioContext, "_tone_0420_Aspirin_sf2_file"); //cello
-//-----------------------------------------------------
-
 function drawingLines() {
-  // drawing the background (gray parts) and the finish line
+  // drawing the background (Gray parts) and the finish line
   var finishLine = two.makeRectangle(
-    0.6 * two.width,
-    two.height * 0.415,
+    0.2 * two.width,
+    two.height * 0.425,
     two.width / 200,
-    two.height * 0.63
+    two.height * 0.35
   );
   finishLineArray.push(finishLine);
   finishLine.fill = "#d0c9d0";
+  finishLine.noStroke();
 
   for (i = 0; i < 6; i += 2) {
     // Gray parts
     var lineV = two.makeRectangle(
       0,
-      two.height * 0.1 + two.height * 0.09 * (i + 1.5),
+      two.height * 0.25 + two.height * 0.05 * (i + 1.5),
       two.width * 2,
-      two.height / 10
+      two.height * 0.05
     );
     lineV.fill = "#d0c9d0";
     lineV.opacity = 0.5;
@@ -72,7 +56,7 @@ function drawingLines() {
   var lineV = two.makeRectangle(
     // Bottom borderline
     0,
-    two.height * 0.73,
+    two.height * 0.6,
     two.width * 2,
     two.height / 150
   );
@@ -83,7 +67,7 @@ function drawingLines() {
   var lineV = two.makeRectangle(
     // Top borderline
     0,
-    two.height * 0.1,
+    two.height * 0.25,
     two.width * 2,
     two.height / 150
   );
@@ -91,12 +75,11 @@ function drawingLines() {
   lineV.noStroke();
   uiLineArray.push(lineV);
 }
-
 drawingLines();
 // --------------Parsering MIDI--------------------
 function readMidiFile(e) {
-  MidiConvert.load("midiScript/" + e, function(midi) {
-    midiSaver.push(midi);
+  MidiConvert.load("midiScript/" + e + ".mid", function(midi) {
+    midiContainer.push(midi);
     console.debug(midi);
     for (j = 0; j < midi.tracks.length; j++) {
       // Checking whether the track is an empty array
@@ -106,11 +89,16 @@ function readMidiFile(e) {
         midiEachPos.push(0);
       }
     }
+
     two.play(); // after Parsering midi files , start the animation and drawing the UI
+    playBool = true;
   });
-}
-// --------------Animation Parts--------------------
+} //-----------------for checking-------------------
+
+// --------------Animation Part--------------------
 two.bind("update", function(frameCount) {
+  // binding function in Two.js
+
   if (colorStyle == 1) {
     // for script 3 dual of fate
     finishLineArray[0].noStroke();
@@ -118,26 +106,33 @@ two.bind("update", function(frameCount) {
     finishLineArray[0].stroke = "black";
     finishLineArray[0].linewidth = 3;
   }
-  var second = frameCount / 45; // the controller of playing rate
-  for (j = 0; j < midiSaver[0].tracks.length; j++) {
+  frame++;
+  var playingRate = frame / 60; // the controller of playing rate
+
+  for (j = 0; j < midiContainer[0].tracks.length; j++) {
     if (
       midiEachPos[j] != -1 &&
-      midiEachPos[j] < midiSaver[0].tracks[j].length // if the track isn't an empty array
+      midiEachPos[j] < midiContainer[0].tracks[j].length // if the track isn't an empty array
     ) {
-      if (second >= midiSaver[0].tracks[j].notes[midiEachPos[j]].time) {
+      if (
+        playingRate >= midiContainer[0].tracks[j].notes[midiEachPos[j]].time
+      ) {
         var Rect = two.makeRectangle(
-          // drawing the Rectangle of each note
-          two.width * -0.3,
-          0.73 * two.height -
-            ((midiSaver[0].tracks[j].notes[midiEachPos[j]].midi - 20) *
+          // drawing and initialing the Rectangle of each note
+          two.width * 1.2 +
+            (midiContainer[0].tracks[j].notes[midiEachPos[j]].duration *
+              two.width) /
+              50,
+          0.6 * two.height -
+            ((midiContainer[0].tracks[j].notes[midiEachPos[j]].midi - 20) *
               two.height *
-              0.63) /
+              0.35) /
               87,
-          (midiSaver[0].tracks[j].notes[midiEachPos[j]].duration * two.width) /
+          (midiContainer[0].tracks[j].notes[midiEachPos[j]].duration *
+            two.width) /
             25,
           two.height / 60
         );
-        midiEachPos[j] += 1;
         if (colorStyle == 1) {
           Rect.fill = cololist[j - 2];
 
@@ -155,54 +150,48 @@ two.bind("update", function(frameCount) {
           }
         } // NEED TO MODIFY THE COLOR
         Rect.opacity = 0.75;
-        recrA.push(Rect);
-        midiArray.push(midiSaver[0].tracks[j].notes[midiEachPos[j]]); // recording the arrary for later using
-        midiInstrument.push(midiSaver[0].tracks[j].instrumentNumber);
+        Rect.noStroke();
+        recrA.push(Rect); // Saving the Rectangle into recrA
+        midiArray.push(midiContainer[0].tracks[j].notes[midiEachPos[j]]); // recording the arrary for later using
+        midiInstrument.push(midiContainer[0].tracks[j].instrumentNumber);
+        midiEachPos[j] += 1;
       }
     }
   }
 
   for (i = 0; i < recrA.length; i++) {
     recrA[i].translation.set(
-      (recrA[i].translation.x += two.width * 0.004), // the Rectangle moving speed controller
+      (recrA[i].translation.x -= two.width * 0.008), // the Rectangle animation moving speed controller
       recrA[i].translation.y
     );
 
-    var rectToTail = recrA[i].translation.x - recrA[i].width / 2; // The leftmost side of the Rectangle
-    var rectToHead = recrA[i].translation.x + recrA[i].width / 2; // The rightmost side of the Rectangle
+    var rectToTail = recrA[i].translation.x + recrA[i].width / 2; // The leftmost side of each Rectangle
+    var rectToHead = recrA[i].translation.x - recrA[i].width / 2; // The rightmost side of each Rectangle
 
     if (
-      rectToHead.toFixed(0) > 0.6 * two.width &&
-      rectToHead.toFixed(0) < 0.605 * two.width
+      rectToHead.toFixed(0) < 0.2 * two.width &&
+      rectToHead.toFixed(0) > 0.18 * two.width
     ) {
+      if (audioPlayBool == false) {
+        playAudio();
+      }
       recrA[i].height = two.height / 45;
-      recrA[i].linewidth = 5;
       finishLineArray[0].fill = recrA[i].fill;
-
-      player.queueWaveTable(
-        audioContext,
-        audioContext.destination,
-        _tone_0000_Chaos_sf2_file,
-        0,
-        midiArray[i].midi,
-        midiArray[i].duration
-      );
     }
     if (
-      rectToTail.toFixed(0) > 0.62 * two.width &&
-      rectToTail.toFixed(0) < 0.625 * two.width
+      rectToTail.toFixed(0) < 0.185 * two.width &&
+      rectToTail.toFixed(0) > 0.17 * two.width
     ) {
-      recrA[i].noStroke();
       recrA[i].fill = "#b2cace";
       recrA[i].height = two.height / 60;
       finishLineArray[0].fill = "#d0c9d0";
     }
-    if (rectToTail > 1.2 * two.width) {
+    if (rectToTail < -0.3 * two.width) {
       // remove rectangles outside of the screen
       two.remove(recrA[i]);
       recrA.shift();
-      midiArray.shift();
       midiInstrument.shift();
+      midiArray.shift();
     }
   }
 });
