@@ -1,6 +1,6 @@
 # Midi Player  🎼
 ![image](
-        src/component/screenShot.png
+       src/assets/screenShot.png
       )
 
 This project is a piano roll midi player implement by Html and Javascript. 
