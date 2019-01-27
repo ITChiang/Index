@@ -1,13 +1,14 @@
 var functionLock = false;
 var cssStyle = document.getElementById("cssStyle");
 var audioName = "";
+var spacebarLocker = true;
 $(document).ready(function() {
   // Animation of Pickin' the midi file
   reStart();
   if (functionLock == false) {
     $("#pickScript1").mouseup(function() {
       reStart();
-
+      spacebarLocker = true;
       menuDisplay();
       colorStyle = 1;
       readMidiFile("Sample1"); // 要改
@@ -20,6 +21,7 @@ $(document).ready(function() {
     });
     $("#pickScript2").mouseup(function() {
       reStart();
+      spacebarLocker = true;
       menuDisplay();
       colorStyle = 1;
       readMidiFile("Sample2"); // 要改
@@ -33,6 +35,7 @@ $(document).ready(function() {
     });
     $("#pickScript3").mouseup(function() {
       reStart();
+      spacebarLocker = true;
       menuDisplay();
       readMidiFile("Sample3"); // 要改
       sampleName = "Sample3"; // 要改
@@ -49,7 +52,7 @@ $(document).ready(function() {
     });
     $("#pickScript4").mouseup(function() {
       reStart();
-
+      spacebarLocker = true;
       menuDisplay();
       colorStyle = 1;
       readMidiFile("Sample4"); // 要改
@@ -116,14 +119,14 @@ $(document).ready(function() {
 function playbutton(e) {
   // Playing button and icon
   var key = e.keyCode;
-  if (key == 32 && playBool == true) {
+  if (key == 32 && playBool == true && spacebarLocker == false) {
     // keycode of spacebar
     playBool = false;
     $("#playIcon").attr("src", "src/assets/playIcon.png");
     scriptMidi.pause();
 
     two.pause();
-  } else if (key == 32 && playBool == false) {
+  } else if (key == 32 && playBool == false && spacebarLocker == false) {
     playBool = true;
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
     scriptMidi.play();
@@ -133,13 +136,13 @@ function playbutton(e) {
 
 $(document).ready(function() {
   $("#playIcon").mouseup(function() {
-    if (playBool == true) {
+    if (playBool == true && spacebarLocker == false) {
       // keycode of spacebar
       playBool = false;
       $("#playIcon").attr("src", "src/assets/playIcon.png");
       scriptMidi.pause();
       two.pause();
-    } else if (playBool == false) {
+    } else if (playBool == false && spacebarLocker == false) {
       playBool = true;
       $("#playIcon").attr("src", "src/assets/pauseIcon.png");
       scriptMidi.play();

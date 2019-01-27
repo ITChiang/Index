@@ -174,6 +174,7 @@ two.bind("update", function(frameCount) {
     ) {
       if (audioPlayBool == false) {
         playAudio();
+        spacebarLocker = false;
       }
       recrA[i].height = two.height / 45;
       finishLineArray[0].fill = recrA[i].fill;
