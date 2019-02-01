@@ -189,7 +189,7 @@ two.bind("update", function(frameCount) {
     }
     if (rectToTail < -0.3 * two.width) {
       // remove rectangles outside of the screen
-      two.remove(recrA[i]);
+      two.remove(recrA[0]);
       recrA.shift();
       midiInstrument.shift();
       midiArray.shift();
