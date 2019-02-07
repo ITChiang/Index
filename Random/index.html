@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Randon</title>
+    <link rel="stylesheet" href="src/style.css" id="cssStyle" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org/face/datalegreya"
+      type="text/css"
+    />
+  </head>
+
+  <div>
+    <script src="src/lib/two.min.js"></script>
+    <script src="src/lib/jquery-3.3.1.min.js"></script>
+    <script src="src/animation.js"></script>
+    <script src="src/ui.js"></script>
+  </div>
+  <body>
+    <input
+      type="range"
+      min="-30"
+      max="30"
+      value="1"
+      class="slider"
+      id="slider_1"
+    />
+    <input
+      type="range"
+      min="-10"
+      max="10"
+      value="10"
+      class="slider"
+      id="slider_2"
+    />
+    <input
+      type="range"
+      min="-10"
+      max="10"
+      value="0"
+      class="slider"
+      id="slider_3"
+    />
+    <input
+      type="range"
+      min="200"
+      max="1529"
+      value="500"
+      class="slider"
+      step="1"
+      id="slider_4"
+    />
+    <input
+      type="range"
+      min="0"
+      max="255"
+      value="5"
+      class="slider"
+      step="1"
+      id="slider_4_1"
+    />
+    <input
+      type="range"
+      min="1"
+      max="3"
+      value="1"
+      class="slider"
+      id="slider_5"
+    />
+    <input
+      type="range"
+      min="1"
+      max="3"
+      value="1"
+      class="slider"
+      id="slider_6"
+    />
+
+    <div class="frontPage">
+      <div class="index">
+        <h1>Randon</h1>
+        <p>
+          An interactive web page that shows graphics changes and rotations, try
+          to change the graphics by dragging the random sliders.
+        </p>
+        <button id="playButton">Start</button>
+        <p>Build With : Two.Js and Jquery.Js</p>
+        <p id="p2">Made by : I-Tung Chiang</p>
+        <img id="sign" src="assets/SignWithOutW.png" />
+      </div>
+    </div>
+
+    <div id="selc">Selector</div>
+    <div id="selcIndex">123</div>
+    <div id="title">Randon</div>
+    <a href="https://www.itungchiang.com">Made By itungchiang</a>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
