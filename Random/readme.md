@@ -1,6 +1,6 @@
 # Random  🎲
 ![image](
-       src/assets/screenShot.png
+       assets/screenShotGif1.gif
       )
 
 This web page is an interactive graphics design implement by Html and Javascript. 
