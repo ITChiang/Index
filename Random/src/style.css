@@ -96,20 +96,26 @@ a {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 0%;
   background: #ffffff;
   cursor: pointer;
+  background-image: url("../assets/iconQr.png");
+  background-size: 16px;
+  background-repeat: no-repeat;
 }
 
 .slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 0%;
   background: #ffffff;
   cursor: pointer;
   border: none;
+  background-image: url("../assets/iconQr.png");
+  background-size: 16px;
+  background-repeat: no-repeat;
 }
 
 #slider_4::-webkit-slider-thumb {
@@ -122,14 +128,6 @@ a {
   cursor: pointer;
 }
 
-#slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 0%;
-  background: #ffffff;
-  cursor: pointer;
-  border: none;
-}
 /*-------*/
 
 .frontPage {
