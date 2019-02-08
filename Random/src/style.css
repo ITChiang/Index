@@ -13,6 +13,15 @@ a {
   font-size: 18px;
   font-family: "Datalegreya";
 }
+#music {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  padding: 1vh;
+  font-size: 2vh;
+  color: white;
+}
 .slider {
   -webkit-appearance: none;
   height: 25px;
@@ -190,4 +199,5 @@ p {
   margin: auto;
   width: 15vw;
   height: 15vh;
+  margin-bottom: 3vh;
 }
