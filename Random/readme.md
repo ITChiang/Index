@@ -16,6 +16,9 @@ An interactive web page that shows graphics changes and rotations,each slider re
 * [Jquery.js](https://jquery.com/) - Interactive user interface 
 * [Tone.js](https://tonejs.github.io/) - Build the sound and music parts 
 
+## Music from 🎧
+* [LJ Kruzer](http://unchartedaudio.com/artists/lj-kruzer/) - Chantiers Navals 412 
+
 
 
 
