@@ -1,4 +1,6 @@
 # Random  🎲
+[Try Here](https://itchiang.github.io/Index/Random/)
+
 ![image](
        assets/screenShotGif1.gif
       )
