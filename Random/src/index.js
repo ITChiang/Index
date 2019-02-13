@@ -8,6 +8,7 @@ var slider_4 = document.getElementById("slider_4");
 var slider_4_1 = document.getElementById("slider_4_1");
 var slider_5 = document.getElementById("slider_5");
 var slider_6 = document.getElementById("slider_6");
+var checkbox_1 = document.getElementById("checkbox_1");
 
 two.pause();
 

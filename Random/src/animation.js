@@ -18,18 +18,24 @@ two.bind("update", function(framecount) {
     _arraryConfig.arrary1[2] = slider_3.value;
     _arraryConfig.arrary1[3] = slider_4.value;
     _arraryConfig.arrary1[4] = slider_4_1.value;
+    _arraryConfig.arrary1[5] = checkbox_1.checked;
+    _arraryConfig.arrary1[6] = drops;
   } else if (slider_6.value == 2) {
     _arraryConfig.arrary2[0] = slider_1.value;
     _arraryConfig.arrary2[1] = slider_2.value;
     _arraryConfig.arrary2[2] = slider_3.value;
     _arraryConfig.arrary2[3] = slider_4.value;
     _arraryConfig.arrary2[4] = slider_4_1.value;
+    _arraryConfig.arrary2[5] = checkbox_1.checked;
+    _arraryConfig.arrary2[6] = drops;
   } else if (slider_6.value == 3) {
     _arraryConfig.arrary3[0] = slider_1.value;
     _arraryConfig.arrary3[1] = slider_2.value;
     _arraryConfig.arrary3[2] = slider_3.value;
     _arraryConfig.arrary3[3] = slider_4.value;
     _arraryConfig.arrary3[4] = slider_4_1.value;
+    _arraryConfig.arrary3[5] = checkbox_1.checked;
+    _arraryConfig.arrary3[6] = drops;
   }
 
   rotationEarth(linesArrary1, 600 / _arraryConfig.arrary1[0], framecount);
@@ -44,16 +50,68 @@ two.bind("update", function(framecount) {
   colorPicker(linesArrary1, _arraryConfig.arrary1[3]);
   colorPicker(linesArrary2, _arraryConfig.arrary2[3]);
   colorPicker(linesArrary3, _arraryConfig.arrary3[3]);
+  //fullScreenMode(linesArrary1);
+  if (_arraryConfig.arrary1[5] == true) {
+    reWidth(linesArrary1, 5);
+  } else {
+    reWidth(linesArrary1, 1);
+  }
+
+  if (_arraryConfig.arrary2[5] == true) {
+    reWidth(linesArrary2, 5);
+  } else {
+    reWidth(linesArrary2, 1);
+  }
+  if (_arraryConfig.arrary3[5] == true) {
+    reWidth(linesArrary3, 5);
+  } else {
+    reWidth(linesArrary3, 1);
+  }
+  /* For rain mode and need to modify  */
+
+  if (_arraryConfig.arrary1[6] == true) {
+    rainMode(linesArrary1);
+    _arraryConfig.arrary1[7] = 1;
+  } else if (
+    _arraryConfig.arrary1[6] == false &&
+    _arraryConfig.arrary1[7] > 0
+  ) {
+    backToCenter(linesArrary1, 0.4, 0.3);
+    _arraryConfig.arrary1[7]--;
+  }
+
+  if (_arraryConfig.arrary2[6] == true) {
+    rainMode(linesArrary2);
+    _arraryConfig.arrary2[7] = 1;
+  } else if (
+    _arraryConfig.arrary2[6] == false &&
+    _arraryConfig.arrary2[7] > 0
+  ) {
+    backToCenter(linesArrary2, 0.4, 0.3);
+    _arraryConfig.arrary2[7]--;
+  }
+
+  if (_arraryConfig.arrary3[6] == true) {
+    rainMode(linesArrary3);
+    _arraryConfig.arrary3[7] = 1;
+  } else if (
+    _arraryConfig.arrary3[6] == false &&
+    _arraryConfig.arrary3[7] > 0
+  ) {
+    backToCenter(linesArrary3, 0.4, 0.3);
+    _arraryConfig.arrary3[7]--;
+  }
+  /* For rain mode and need to modify  */
 
   if (slider_5.value == 1) {
-    changingWidth(linesArrary2, 0);
-    changingWidth(linesArrary3, 0);
+    changingOpacity(linesArrary2, 0);
+    changingOpacity(linesArrary3, 0);
   } else if (slider_5.value == 2) {
-    changingWidth(linesArrary2, two.height * 0.03);
-    changingWidth(linesArrary3, 0);
+    changingOpacity(linesArrary2, 1);
+    changingOpacity(linesArrary3, 0);
   } else {
-    changingWidth(linesArrary2, two.height * 0.03);
-    changingWidth(linesArrary3, two.height * 0.03);
+    changingOpacity(linesArrary2, 1);
+    changingOpacity(linesArrary3, 1);
   }
 });
 
@@ -116,9 +174,9 @@ function zIndexFadeIn(target, rate, frame) {
   for (var i = 0; i < 100; i++) {}
 }
 
-function changingWidth(target, value) {
+function changingOpacity(target, value) {
   for (var i = 0; i < 100; i++) {
-    target[i].width = value;
+    target[i].opacity = value;
   }
 }
 function changingXPosition(target, value) {
@@ -154,11 +212,13 @@ function reColor(target, row) {
   for (var i = 0; i < row; i++) {
     for (var j = 0; j < 10; j++) {
       target[j * 10 + i].stroke = getRandomColor();
+      target[j * 10 + i].fill = getRandomColor();
     }
   }
   for (var i = 9; i > row; i--) {
     for (var j = 0; j < 10; j++) {
       target[j * 10 + i].stroke = "white";
+      target[j * 10 + i].fill = "white";
     }
   }
   console.debug("color change");
@@ -197,8 +257,41 @@ function colorPicker(target, value) {
 
   for (var i = 0; i < 100; i++) {
     target[i].stroke = color;
+    target[i].fill = color;
   }
 }
 function pad(n) {
+  //  Color picking
   return n.length < 2 ? "0" + n : n;
+}
+
+function reWidth(target, size) {
+  for (i = 0; i < 100; i++) {
+    target[i].width = size * two.height * 0.05;
+    target[i].height = size;
+    if (size == 1) {
+      target[i].height = 0;
+    } else {
+      target[i].height = size;
+    }
+  }
+}
+
+function rainMode(target) {
+  for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
+      target[i * 10 + j].translation.x =
+        two.width * -0.1 + i * two.width * 0.2 * Math.random();
+      target[i * 10 + j].translation.y =
+        two.height * -0.1 + j * two.height * 0.2 * Math.random();
+    }
+  }
+}
+function backToCenter(target, x, y) {
+  for (var i = 0; i < 10; i++) {
+    for (var j = 0; j < 10; j++) {
+      target[i * 10 + j].translation.x = two.width * x + two.height * 0.04 * i;
+      target[i * 10 + j].translation.y = two.height * y + two.height * 0.04 * j;
+    }
+  }
 }
