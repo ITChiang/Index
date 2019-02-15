@@ -1,4 +1,3 @@
-document.addEventListener("keydown", playbutton);
 var playBool = true;
 var drops = false;
 var _arraryConfig = {
@@ -29,7 +28,7 @@ function playbutton(e) {
 $(document).ready(function() {
   $("#playButton").mouseup(function() {
     $(".frontPage").css("z-index", "-5");
-    $(".frontPage").css("opacity", "0");
+    $(".frontPage").fadeOut();
     scriptMidi.play();
   });
   $("#drops").mouseup(function() {
@@ -44,3 +43,4 @@ $(document).ready(function() {
 });
 
 var scriptMidi = new Audio("assets/bgm1.mp3");
+document.addEventListener("keydown", playbutton);
