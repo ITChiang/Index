@@ -13,6 +13,6 @@ var checkbox_1 = document.getElementById("checkbox_1");
 two.pause();
 
 $(document).ready(function() {
-  console.log("ready!");
+  console.log("Ready!");
   two.play();
 });
