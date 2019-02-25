@@ -7,7 +7,7 @@ This project is a piano roll based midi player implement by Html and Javascript.
 
 ## About the Project 🎹
 
-A demo webpage based on machine learning algorithm to automatically re-arrange music pieces. The player can explore four different re-arrangements for each music piece.The interface is designed in a retro 8-bits style.
+A demo webpage based on machine learning algorithm to automatically re-arrange music pieces. The player can explore four different re-arrangements for each music piece.
 
 ## Built With 🤝
 
