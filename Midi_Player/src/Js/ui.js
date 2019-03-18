@@ -13,7 +13,7 @@ $(document).ready(function() {
     $("#pickScript1").mouseup(function() {
       reStart();
       menuDisplay();
-      sampleName = Sample1; // 要改
+      sampleName = Sample1;
       audioName = Sample1;
       pickAudio(Sample1);
       oriPlayingReset();
@@ -21,7 +21,7 @@ $(document).ready(function() {
     $("#pickScript2").mouseup(function() {
       reStart();
       menuDisplay();
-      sampleName = Sample2; // 要改
+      sampleName = Sample2;
       audioName = Sample2;
       pickAudio(Sample2);
       oriPlayingReset();
@@ -29,7 +29,7 @@ $(document).ready(function() {
     $("#pickScript3").mouseup(function() {
       reStart();
       menuDisplay();
-      sampleName = Sample3; // 要改
+      sampleName = Sample3;
       audioName = Sample3;
       pickAudio(Sample3);
       oriPlayingReset();
@@ -37,51 +37,10 @@ $(document).ready(function() {
     $("#pickScript4").mouseup(function() {
       reStart();
       menuDisplay();
-      sampleName = Sample4; // 要改
+      sampleName = Sample4;
       audioName = Sample4;
       pickAudio(Sample4);
       oriPlayingReset();
-    });
-    $("#pickScript5").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("Sample1"); // 要改
-      sampleName = "Sample1"; // 要改
-    });
-    $("#pickScript6").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("standard1");
-    });
-    $("#pickScript7").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("download5");
-    });
-    $("#pickScript8").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("test3");
-    });
-    $("#pickScript9").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("download5");
-    });
-    $("#pickScript10").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("test3");
-    });
-    $("#pickScript11").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("test3");
-    });
-    $("#pickScript12").mouseup(function() {
-      reStart();
-      menuDisplay();
-      readMidiFile("test3");
     });
   }
 });
@@ -97,36 +56,36 @@ $(document).ready(function() {
   $("#pickScript1_2").mouseup(function() {
     reStart();
     playingMode = 0;
+    pickAudio(sampleName + "/" + "/" + audioName + "_1");
     readMidiFile(sampleName + "/" + sampleName + "_1");
     $("#menu_opener_id_2").prop("checked", false);
-    pickAudio(sampleName + "/" + "/" + audioName + "_1");
 
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
   });
   $("#pickScript2_2").mouseup(function() {
     reStart();
     playingMode = 0;
+    pickAudio(audioName + "/" + audioName + "_2");
     readMidiFile(sampleName + "/" + sampleName + "_2");
     $("#menu_opener_id_2").prop("checked", false);
-    pickAudio(audioName + "/" + audioName + "_2");
 
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
   });
   $("#pickScript3_2").mouseup(function() {
     reStart();
     playingMode = 0;
+    pickAudio(audioName + "/" + audioName + "_3");
     readMidiFile(sampleName + "/" + sampleName + "_3");
     $("#menu_opener_id_2").prop("checked", false);
-    pickAudio(audioName + "/" + audioName + "_3");
 
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
   });
   $("#pickScript4_2").mouseup(function() {
     reStart();
     playingMode = 0;
+    pickAudio(audioName + "/" + audioName + "_4");
     readMidiFile(sampleName + "/" + sampleName + "_4");
     $("#menu_opener_id_2").prop("checked", false);
-    pickAudio(audioName + "/" + audioName + "_4");
 
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
   });
@@ -188,6 +147,7 @@ $(document).ready(function() {
 
 //--------Restart Function------
 function reStart() {
+  //init
   two.clear();
   two.pause();
   recrA.length = 0;
@@ -230,7 +190,9 @@ function menuDisplay() {
 }
 var scriptMidi = new Audio();
 function pickAudio(e) {
+  console.debug("loading!!");
   scriptMidi = new Audio("audio/" + e + ".wav");
+  console.debug("Done!!");
 }
 function playAudio() {
   scriptMidi.play();

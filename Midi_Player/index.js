@@ -91,6 +91,7 @@ function drawingLines() {
 drawingLines();
 // --------------Parsering MIDI--------------------
 function readMidiFile(e) {
+  console.debug("parsering midi file");
   MidiConvert.load("midiScript/" + e + ".mid", function(midi) {
     midiContainer.push(midi);
     console.debug(midi);
@@ -115,7 +116,6 @@ function checkingInstrument() {
   for (j = 0; j < midiContainer[0].tracks.length; j++) {
     if (midiEachPos[j] != -1) {
       $("#" + midiContainer[0].tracks[j].name).css("font-size", "3.5vh");
-      console.debug(midiContainer[0].tracks[j].name);
     }
   }
 }
