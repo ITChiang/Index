@@ -128,7 +128,7 @@ function checkingInstrument() {
 // --------------Animation Part--------------------
 two.bind("update", function(frameCount) {
   // binding function in Two.js
-  frame++;
+  if (scriptMidi.readyState == 4) frame++;
 
   var playingRate = frame / 60; // the controller of playing rate
   if (playingMode == 0) {
