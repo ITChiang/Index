@@ -94,7 +94,6 @@ function readMidiFile(e) {
   console.debug("parsering midi file");
   MidiConvert.load("midiScript/" + e + ".mid", function(midi) {
     midiContainer.push(midi);
-    console.debug(midi);
     for (j = 0; j < midi.tracks.length; j++) {
       // Check whether the track is an empty array
       if (midi.tracks[j].length == 0) {
@@ -103,8 +102,14 @@ function readMidiFile(e) {
         midiEachPos.push(0);
       }
     }
+    $(".loadingPage").css("font-size", "10vh");
+    $(".loadingPage").css("z-index", "5");
+    setTimeout(function() {
+      $(".loadingPage").css("font-size", "0vh");
+      $(".loadingPage").css("z-index", "-5");
+      two.play(); // after Parsering midi files , start the animation and drawing the UI
+    }, 2000); //delay 2secs for loading the mp3 files
 
-    two.play(); // after Parsering midi files , start the animation and drawing the UI
     playBool = true;
     document.getElementById("debug1").innerHTML = sampleName;
     checkingInstrument();

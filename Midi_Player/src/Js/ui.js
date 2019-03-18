@@ -58,6 +58,7 @@ $(document).ready(function() {
     playingMode = 0;
     pickAudio(sampleName + "/" + "/" + audioName + "_1");
     readMidiFile(sampleName + "/" + sampleName + "_1");
+
     $("#menu_opener_id_2").prop("checked", false);
 
     $("#playIcon").attr("src", "src/assets/pauseIcon.png");
