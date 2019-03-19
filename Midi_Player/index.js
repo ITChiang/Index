@@ -91,7 +91,6 @@ function drawingLines() {
 drawingLines();
 // --------------Parsering MIDI--------------------
 function readMidiFile(e) {
-  console.debug("parsering midi file");
   MidiConvert.load("midiScript/" + e + ".mid", function(midi) {
     midiContainer.push(midi);
     for (j = 0; j < midi.tracks.length; j++) {
@@ -108,14 +107,15 @@ function readMidiFile(e) {
       $(".loadingPage").css("font-size", "0vh");
       $(".loadingPage").css("z-index", "-5");
       two.play(); // after Parsering midi files , start the animation and drawing the UI
-    }, 2000); //delay 2secs for loading the mp3 files
+    }, 3000); //delay 3secs for loading the mp3 files
 
     playBool = true;
     document.getElementById("debug1").innerHTML = sampleName;
     checkingInstrument();
   });
-} //-----------------for checking-------------------
-//  $("#Piano").css("font-size", "3.5vh");
+}
+//-----------------Checking-------------------
+
 function checkingInstrument() {
   initFontSize();
   for (j = 0; j < midiContainer[0].tracks.length; j++) {
@@ -128,12 +128,13 @@ function checkingInstrument() {
 // --------------Animation Part--------------------
 two.bind("update", function(frameCount) {
   // binding function in Two.js
-  if (scriptMidi.readyState == 4) frame++;
+  frame++;
 
   var playingRate = frame / 60; // the controller of playing rate
   if (playingMode == 0) {
     mainDrawing(playingRate);
   } else {
+    // Unused
   }
 });
 
@@ -163,10 +164,10 @@ function mainDrawing(playingRate) {
           two.height / 87
         );
 
-        Rect.fill = cololist[j - 2]; // NEEDS TO MODIFY THE COLOR
+        Rect.fill = cololist[j - 2]; // j = 0,1 unused
         Rect.opacity = 1;
         //Rect.noStroke();
-        recrA.push(Rect); // Saving the Rectangle into recrA
+        recrA.push(Rect); // Recording the Rectangle into recrA
         midiArray.push(midiContainer[0].tracks[j].notes[midiEachPos[j]]); // recording the arrary for later using
         midiInstrument.push(midiContainer[0].tracks[j].instrumentNumber);
         midiEachPos[j] += 1;
@@ -221,6 +222,7 @@ scriptMidi.onended = function() {
   playBtnLocker = true;
 };
 var styles = {
+  // font style in two.js
   family: "ka3, sans-serif",
   size: 50,
   leading: 50,

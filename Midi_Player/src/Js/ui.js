@@ -1,5 +1,5 @@
-var functionLock = false;
 var audioName = "";
+var functionLock = false;
 var playBtnLocker = true;
 var Sample1 = "Les_Potes";
 var Sample2 = "Untitled";
@@ -112,10 +112,10 @@ $(document).ready(function() {
 });
 
 function playbutton(e) {
-  // Playing button and icon
+  // Controller of Play button and icon
   var key = e.keyCode;
   if (key == 32 && playBool == true && playBtnLocker == false) {
-    // keycode of spacebar
+    // 32 = keycode of spacebar
     playBool = false;
     $("#playIcon").attr("src", "src/assets/playIcon.png");
     scriptMidi.pause();
